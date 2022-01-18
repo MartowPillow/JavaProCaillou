@@ -161,7 +161,7 @@ Tableau 1 : Points attribués à chacun des éléments de la composante dite « 
 
 
 
-### Composante Negative P
+### Composante Positive P
 
 La composante P est calculée, en fonction de la teneur de l’aliment en fibres et en protéines (exprimées en g pour 100 g d’aliment). Pour chacun de ces éléments, des points, allant de 1 à 5 sont attribués en fonction de leur teneur dans l’aliment (cf. tableau 2). La composante positive P du score nutritionnel est la note correspondant à la somme des points définis pour ces deux éléments : cette note est donc comprise entre 0 et 10.  
 
