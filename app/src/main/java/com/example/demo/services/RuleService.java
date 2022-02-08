@@ -3,10 +3,12 @@ package com.example.demo.services;
 import com.example.demo.models.Product;
 import com.example.demo.models.Product.ProductJson.Nutriment;
 import com.example.demo.repositories.RuleRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class RuleService {
 
     private final RuleRepository repository;
@@ -17,6 +19,8 @@ public class RuleService {
     }
 
     public int computeScore(Product entity) {
+        log.trace("Calling computeScore with {}", entity.toString());
+
         Nutriment nutriment = entity.product.nutriments;
         int scoreN = 0, scoreP = 0;
 

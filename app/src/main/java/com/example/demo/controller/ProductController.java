@@ -1,11 +1,13 @@
 package com.example.demo.controller;
 
-import com.example.demo.converter.ProductConverter;
+import com.example.demo.mapper.ProductConverter;
 import com.example.demo.models.Product;
-import com.example.demo.models.ProductDTO;
+import com.example.demo.models.dto.ProductDTO;
 import com.example.demo.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,15 +27,18 @@ public class ProductController {
     }
 
     @GetMapping(value = "/product/{barcode}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ProductDTO getProduct(@PathVariable String barcode)
-    {
+    public ResponseEntity<ProductDTO> getProduct(@PathVariable String barcode) {
         Product product = service.getByBarcode(barcode);
-        return converter.toDTO(product);
+        ProductDTO productDTO = converter.toDTO(product);
+
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(productDTO);
     }
 
     @GetMapping(value = "/product/raw/{barcode}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Product getRawProduct(@PathVariable String barcode)
+    public ResponseEntity<Product> getRawProduct(@PathVariable String barcode)
     {
-        return service.getByBarcode(barcode);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(service.getByBarcode(barcode));
     }
 }
