@@ -2,7 +2,9 @@ package com.example.demo.services;
 
 import com.example.demo.models.Product;
 import com.example.demo.models.dto.ProductDTO;
+import com.example.demo.models.exceptions.ApiException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -10,9 +12,11 @@ import org.springframework.web.client.RestTemplate;
 @Slf4j
 public class ProductService {
 
-    private final String API_URL = "https://fr.openfoodfacts.org/api/v0/produit";
+    @Value("${api.url}")
+    public String API_URL;
 
     public ProductDTO generate() {
+        log.trace("Calling generate");
         return ProductDTO.builder()
                 .id(0)
                 .barCode("test")
@@ -22,10 +26,11 @@ public class ProductService {
     }
 
     public Product getByBarcode(String barcode) {
+        if (barcode == null || barcode.trim().equals("")) throw new ApiException("Barcode is invalid");
         log.trace("Calling getByBarcode with {}", barcode);
+
         RestTemplate restTemplate = new RestTemplate();
-        Product response = restTemplate.getForObject("%s/%s.json".formatted(API_URL, barcode), Product.class);
-        return response;
+        return restTemplate.getForObject("%s/%s.json".formatted(API_URL, barcode), Product.class);
     }
 
 }

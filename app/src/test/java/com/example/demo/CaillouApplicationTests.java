@@ -8,6 +8,7 @@ class CaillouApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }
