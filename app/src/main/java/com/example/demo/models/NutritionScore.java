@@ -1,5 +1,6 @@
 package com.example.demo.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.persistence.Table;
 
 @Data
 @Entity
+@AllArgsConstructor
 @Table(name="nutrition_score")
 public class NutritionScore {
 

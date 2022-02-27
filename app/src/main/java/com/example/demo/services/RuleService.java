@@ -2,6 +2,7 @@ package com.example.demo.services;
 
 import com.example.demo.models.Product;
 import com.example.demo.models.Product.ProductJson.Nutriment;
+import com.example.demo.models.exceptions.ApiException;
 import com.example.demo.repositories.RuleRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class RuleService {
     }
 
     public int computeScore(Product entity) {
+        if (entity == null) throw new ApiException("product cannot be null");
         log.trace("Calling computeScore with {}", entity.toString());
 
         Nutriment nutriment = entity.product.nutriments;

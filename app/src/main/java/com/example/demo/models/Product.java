@@ -2,9 +2,11 @@ package com.example.demo.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 
 import java.io.Serializable;
 
+@AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Product implements Serializable {
 
@@ -14,7 +16,8 @@ public class Product implements Serializable {
     @JsonProperty("product")
     public ProductJson product;
 
-    public class ProductJson {
+    @AllArgsConstructor
+    public static class ProductJson {
 
         @JsonProperty("product_name")
         public String name;
@@ -25,7 +28,8 @@ public class Product implements Serializable {
         @JsonProperty("nutriments")
         public Nutriment nutriments;
 
-        public class Nutriment {
+        @AllArgsConstructor
+        public static class Nutriment {
 
             @JsonProperty("energy_100g")
             public Double energy;

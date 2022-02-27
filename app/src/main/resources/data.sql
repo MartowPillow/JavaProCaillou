@@ -64,4 +64,4 @@ insert into nutrition_score(id, classe, lower_bound, upper_bound, color) values(
 insert into nutrition_score(id, classe, lower_bound, upper_bound, color) values(2, 'Bon', 0, 2, 'light green');
 insert into nutrition_score(id, classe, lower_bound, upper_bound, color) values(3, 'Mangeable', 3, 10, 'yellow');
 insert into nutrition_score(id, classe, lower_bound, upper_bound, color) values(4, 'Mouai', 11, 18, 'orange');
-insert into nutrition_score(id, classe, lower_bound, upper_bound, color) values(5, 'Degueu', 19, 40, 'green');
+insert into nutrition_score(id, classe, lower_bound, upper_bound, color) values(5, 'Degueu', 19, 40, 'red');
